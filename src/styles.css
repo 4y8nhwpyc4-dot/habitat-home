@@ -1,0 +1,117 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", "Times New Roman", serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+
+  --color-background: #efece4;
+  --color-foreground: #1c1b16;
+  --color-card: #f7f5ef;
+  --color-card-foreground: #1c1b16;
+  --color-popover: #f7f5ef;
+  --color-popover-foreground: #1c1b16;
+  --color-primary: #2f3d48;
+  --color-primary-foreground: #f4f1ea;
+  --color-secondary: #e4e0d6;
+  --color-secondary-foreground: #1c1b16;
+  --color-muted: #e7e3d8;
+  --color-muted-foreground: #6e6a60;
+  --color-accent: #d9e0e4;
+  --color-accent-foreground: #2f3d48;
+  --color-destructive: #8f3d32;
+  --color-destructive-foreground: #f7f5ef;
+  --color-border: #d4cfc3;
+  --color-input: #d4cfc3;
+  --color-ring: #2f3d48;
+  --color-spine: #1c1b16;
+  --color-spine-foreground: #efece4;
+  --color-spine-muted: #9a958a;
+  --color-ok: #3d5a45;
+  --color-warn: #8a6a3a;
+  --color-rule: #c9c3b5;
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius: 12px;
+
+  --shadow-xs: 0 1px 0 color-mix(in oklab, var(--color-foreground) 6%, transparent);
+  --shadow-lg: 0 16px 40px color-mix(in oklab, var(--color-foreground) 12%, transparent);
+
+  --ease-smooth-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+.paper-grid {
+  background-color: var(--color-background);
+  background-image:
+    linear-gradient(
+      to right,
+      color-mix(in oklab, var(--color-rule) 55%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--color-rule) 55%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 28px 28px;
+}
+
+.sheet-rule {
+  box-shadow: inset 0 0 0 1px var(--color-border);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+  }
+}
